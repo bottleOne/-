@@ -59,11 +59,11 @@ void big03(int N){
     cout << a << '\n';
 }
 
-//
-int N1, cnt;
+//이것또한 등비수열공식을 이용하면쉽게 풀 수 있다. 횟수가 3^N배의 수가 증가하는것을 알수 있을것이다. -> O(3^n)
+int N1, cnt2;
 void big04(int N1){
-    cnt++;
-    cout << cnt << '\n';
+    cnt2++;
+    cout << cnt2 << '\n';
     if(N1 == 0) return;
     for(int i = 0; i < 3; i++){
         big04(N1 - 1);
