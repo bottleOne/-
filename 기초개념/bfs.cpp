@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int m,n,x,xx,y,yy;
-int dy[] = {-1,0,1,0};
-int dx[] = {0,1,0,-1};
+int m,n,x,xx,y,yy,a,b;
+int dy[4] = {-1,0,1,0};
+int dx[4] = {0,1,0,-1};
 int vi[104][104], k[104][104];
-int result[104][104];
+
 
 int main(){
 
@@ -17,29 +17,29 @@ int main(){
     cin >> y >> x;
     cin >> yy >> xx;
 
-    for(int i = 0; i<y; i++){
-        for(int j = 0; j<x; j++){
+    for(int i = 0; i<n; i++){
+        for(int j = 0; j<m; j++){
             cin >> k[i][j];
         }
     }
 
-    vi[n][m] = 1;
+    vi[y][x] = 1;
     queue<pair<int, int>> q;
-    q.push({n,m});
-
+    q.push({y,x});
+ 
     while (q.size())
     {
-        tie(y, x) = q.front(); q.pop();
+        tie(a, b) = q.front(); q.pop();
 
         for(int i = 0; i < 4; i++ ){
-            int diy = dy[i] + y;
-            int dix = dx[i] + x;
+            int diy = dy[i] + a;
+            int dix = dx[i] + b;
 
-            if(diy >= 3 || diy < 0 || diy >= 3 || diy < 0) continue;
-            if(vi[diy][dix] == 1) continue;
-            if(k[diy][dix] == 1) continue;
+            if(diy >= n || diy < 0 || dix >= m || dix < 0) continue;
+            if(vi[diy][dix]) continue;
+            if(k[diy][dix] == 0) continue;
 
-            vi[diy][dix] = vi[y][x] + 1;
+            vi[diy][dix] = vi[a][b] + 1;
             q.push({diy, dix});
         }
     }
